@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Table Translator</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>
+                Page Table Translator
+            </h1>
+            <p>Simulate logical to physical address translation using page tables</p>
+        </div>
+
+        <!-- Configuration Panel -->
+        <div class="config-panel">
+            <h2>Configuration</h2>
+
+            <!-- Page Size -->
+            <div class="form-group">
+                <label>Page Size</label>
+                <div class="button-group">
+                   <button class="btn btn-size" onclick="selectPageSize(512, event)">512 bytes</button>
+<button class="btn btn-size active" onclick="selectPageSize(1024, event)">1 KB (1024 bytes)</button>
+                </div>
+            </div>
+
+            <!-- Page Table -->
+            <div class="form-group">
+                <label>Page Table (Dictionary format)</label>
+                <input type="text" id="pageTable" value="{0: 2, 1: -1, 2: 4, 3: 0}" placeholder="{0: 2, 1: -1, 2: 4, 3: 0}">
+                <div class="hint">Format: {page: frame, ...} | Pages: 0-7 | Frames: 0-5 or -1 (not loaded)</div>
+            </div>
+
+            <!-- Logical Addresses -->
+            <div class="form-group">
+                <label>Logical Addresses (List format, max 10)</label>
+                <input type="text" id="addresses" value="[0, 512, 1500, 2048, 3500]" placeholder="[0, 512, 1500, 2048, 3500]">
+                <div class="hint">Format: [address1, address2, ...] | Up to 10 addresses</div>
+            </div>
+
+            <!-- Translate Button -->
+            <button class="btn btn-primary" onclick="translateAddresses()">Translate Addresses</button>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="error-message"></div>
+        </div>
+
+        <!-- Results -->
+        <div id="results" class="results"></div>
+    </div>
+
+    <script src="js/main.js" ></script>
+   
+</body>
+</html>
